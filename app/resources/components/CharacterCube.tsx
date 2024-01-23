@@ -7,7 +7,7 @@ interface charcterInterface {
 
 export const CharacterCube:FC<charcterInterface> = ({children, styles}) => {
   return (
-    <div className={`${styles} rounded-md p-6`} >
+    <div className={`${styles} rounded-md px-6 py-4`} >
         {children}
     </div>
   )

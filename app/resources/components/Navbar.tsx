@@ -1,6 +1,7 @@
 import React from 'react'
 import { ThemeSwitcher } from './ThemeSwitcher'
 import { HowToPlay } from './HowToPlay'
+import { Statistics } from './Statistics';
 
 export const Navbar = () => {
     return (
@@ -8,8 +9,8 @@ export const Navbar = () => {
             <nav className="flex justify-between w-full items-center">
                 <HowToPlay />
                 <p className=' text-4xl text-[#202537] text-center font-semibold' >WORDLE</p>
-                <div className='flex items-center text-[#818181]' >
-                    <i className="fa-solid fa-square-poll-vertical"></i>
+                <div className='flex items-center text-[#818181] gap-1' >
+                    <Statistics/>
                     <ThemeSwitcher />
                 </div>
             </nav>

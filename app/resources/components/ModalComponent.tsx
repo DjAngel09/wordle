@@ -15,9 +15,9 @@ export const ModalComponent:FC<ModalInterface> = ({ children, open = false }) =>
                     <div
                         className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
                     >
-                        <div className="relative w-auto my-6 mx-auto max-w-3xl">
+                        <div className="relative w-auto my-6 mx-auto max-w-xl">
                             {/*content*/}
-                            <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                            <div className="border border-black rounded-lg shadow-lg relative flex flex-col w-full bg-[#f3f3f3e3] outline-none focus:outline-none px-11 pt-14 pb-7">
                                 {children}
                             </div>
                         </div>
