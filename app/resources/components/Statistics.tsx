@@ -8,12 +8,12 @@ export const Statistics = () => {
     return (
         <>
             <i
-                className="fa-solid fa-square-poll-vertical"
+                className="fa-solid fa-square-poll-vertical dark:text-[#DADCE0]"
                 onClick={() => setShowModal(true)}
             ></i>
 
             <ModalComponent open={showModal} >
-                <div className='text-lg font-normal text-black' >
+                <div className='text-lg font-normal text-black dark:text-[#ffffff]' >
                     <p className='text-center text-4xl font-extrabold mx-14 ' >Estadísticas</p>
 
                     <div className='flex justify-between text-center pb-14 pt-8' >

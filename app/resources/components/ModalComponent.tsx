@@ -17,7 +17,7 @@ export const ModalComponent:FC<ModalInterface> = ({ children, open = false }) =>
                     >
                         <div className="relative w-auto my-6 mx-auto max-w-xl">
                             {/*content*/}
-                            <div className="border border-black rounded-lg shadow-lg relative flex flex-col w-full bg-[#f3f3f3e3] outline-none focus:outline-none px-11 pt-14 pb-7">
+                            <div className="border border-black rounded-lg shadow-lg relative flex flex-col w-full bg-[#f3f3f3e3] outline-none focus:outline-none px-11 pt-14 pb-7 dark:bg-[#262B3C] dark:border-[#939B9F]">
                                 {children}
                             </div>
                         </div>

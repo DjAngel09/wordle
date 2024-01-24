@@ -10,7 +10,7 @@ export const HowToPlay = () => {
   return (
     <>
       <i
-        className="fa-solid fa-circle-question text-[#818181]"
+        className="fa-solid fa-circle-question text-[#818181] dark:text-[#DADCE0]"
         onClick={() => setShowModal(true)}
       ></i>
 
@@ -26,55 +26,55 @@ export const HowToPlay = () => {
 
           <span className='font-bold' >Ejemplos</span>
           <div className='flex gap-3 justify-center pt-6 pb-5' >
-            <CharacterCube styles='bg-[#6AAA64]' >
+            <CharacterCube styles='bg-[#6AAA64] px-6 py-4' >
               <p className='text-3xl font-extrabold' >G</p>
             </CharacterCube>
-            <CharacterCube styles='border border-black' >
+            <CharacterCube styles='border border-black dark:border-white px-6 py-4' >
               <p className='text-3xl font-extrabold' >A</p>
             </CharacterCube>
-            <CharacterCube styles='border border-black' >
+            <CharacterCube styles='border border-black dark:border-white px-6 py-4' >
               <p className='text-3xl font-extrabold' >T</p>
             </CharacterCube>
-            <CharacterCube styles='border border-black' >
+            <CharacterCube styles='border border-black dark:border-white px-6 py-4' >
               <p className='text-3xl font-extrabold' >O</p>
             </CharacterCube>
-            <CharacterCube styles='border border-black' >
+            <CharacterCube styles='border border-black dark:border-white px-6 py-4' >
               <p className='text-3xl font-extrabold' >S</p>
             </CharacterCube>
           </div>
           <p>La letra <span className='font-bold' >G</span> está en la palabra y el posición correcta</p>
           <div className='flex gap-3 justify-center py-5' >
-            <CharacterCube styles='border border-black' >
+            <CharacterCube styles='border border-black dark:border-white px-6 py-4' >
               <p className='text-3xl font-extrabold' >V</p>
             </CharacterCube>
-            <CharacterCube styles='border border-black' >
+            <CharacterCube styles='border border-black dark:border-white px-6 py-4' >
               <p className='text-3xl font-extrabold' >O</p>
             </CharacterCube>
-            <CharacterCube styles='bg-[#CEB02C]' >
+            <CharacterCube styles='bg-[#CEB02C] px-6 py-4' >
               <p className='text-3xl font-extrabold' >C</p>
             </CharacterCube>
-            <CharacterCube styles='border border-black' >
+            <CharacterCube styles='border border-black dark:border-white px-6 py-4' >
               <p className='text-3xl font-extrabold' >A</p>
             </CharacterCube>
-            <CharacterCube styles='border border-black' >
+            <CharacterCube styles='border border-black dark:border-white px-6 py-4' >
               <p className='text-3xl font-extrabold' >L</p>
             </CharacterCube>
           </div>
           <p>La letra <span className='font-bold' >C</span> está en la palabra pero en la posición incorrecta.</p>
           <div className='flex gap-3 justify-center py-5' >
-            <CharacterCube styles='border border-black' >
+            <CharacterCube styles='border border-black dark:border-white px-6 py-4' >
               <p className='text-3xl font-extrabold' >C</p>
             </CharacterCube>
-            <CharacterCube styles='border border-black' >
+            <CharacterCube styles='border border-black dark:border-white px-6 py-4' >
               <p className='text-3xl font-extrabold' >A</p>
             </CharacterCube>
-            <CharacterCube styles='border border-black' >
+            <CharacterCube styles='border border-black dark:border-white px-6 py-4' >
               <p className='text-3xl font-extrabold' >N</p>
             </CharacterCube>
-            <CharacterCube styles='border border-black' >
+            <CharacterCube styles='border border-black dark:border-white px-6 py-4' >
               <p className='text-3xl font-extrabold' >T</p>
             </CharacterCube>
-            <CharacterCube styles='bg-[#939B9F]' >
+            <CharacterCube styles='bg-[#939B9F] px-6 py-4' >
               <p className='text-3xl font-extrabold' >O</p>
             </CharacterCube>
           </div>
