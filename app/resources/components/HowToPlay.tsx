@@ -10,7 +10,7 @@ export const HowToPlay = () => {
   return (
     <>
       <i
-        className="fa-solid fa-circle-question text-[#818181] dark:text-[#DADCE0]"
+        className="fa-solid fa-circle-question text-[#818181] dark:text-[#DADCE0] text-xl"
         onClick={() => setShowModal(true)}
       ></i>
 

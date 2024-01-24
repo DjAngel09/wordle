@@ -1,14 +1,19 @@
 'use client'
-import React, { useState } from 'react'
+import React, { FC, useState } from 'react'
 import { ModalComponent } from './ModalComponent';
 
-export const Statistics = () => {
+interface statisticsInterface {
+    seconds: number;
+    minutes: number;
+}
+
+export const Statistics:FC<statisticsInterface> = ({seconds, minutes}) => {
     const [showModal, setShowModal] = useState(false);
 
     return (
         <>
             <i
-                className="fa-solid fa-square-poll-vertical dark:text-[#DADCE0]"
+                className="fa-solid fa-square-poll-vertical dark:text-[#DADCE0] text-xl"
                 onClick={() => setShowModal(true)}
             ></i>
 
@@ -28,7 +33,7 @@ export const Statistics = () => {
                     </div>
 
                     <p className='text-center' >SIGUIENTE PALABRA</p>
-                    <p className='text-center font-bold' >04:10</p>
+                    <p className='text-center font-bold' >{`${minutes}:${seconds}`}</p>
 
                     <div className='flex justify-center pt-8' >
                         <button
