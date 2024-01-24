@@ -2,69 +2,79 @@
 import React, { useEffect, useState } from 'react'
 import { Navbar } from '../components/Navbar'
 import { Game } from '../components'
-import { words } from '../utils/words'
 import { useTimer } from 'react-timer-hook'
+import { generateWords, getRandomWord } from '../utils'
 
 export const GameTemplate = () => {
 
   let finalWords: Array<string> = [];
+  const words = generateWords();
   const timeStamp = new Date(Date.now() + 300 * 1000)
-  const [word, setWord] = useState('perro');
-  const [listWordle, setListWordle] = useState([['', '', '', '', ''], ['', '', '', '', ''], ['', '', '', '', ''], ['', '', '', '', ''], ['', '', '', '', '']]);
+  const [word, setWord] = useState('');
+  const [plays, setPlays] = useState(0);
+  const [victories, setVictories] = useState(0);
+  const [showWord, setShowWord] = useState(false);
+  const [clean, setClean] = useState(false);
+
   const {
     seconds,
     minutes,
-    restart
+    restart,
+    pause,
+    start
   } = useTimer({
     expiryTimestamp: timeStamp,
-    onExpire: () => console.warn('onExpire called')
+    onExpire: () => notWinner()
   });
 
   useEffect(() => {
-    finalWords = [];
-    words.forEach(word => {
-      if (word.length === 5) {
-        finalWords.push(word.normalize('NFD').replace(/[\u0300-\u036f]/g,""))
-      }
-    });
-    setWord(finalWords[0]);
-    console.log(finalWords, word);
+
+    getWord();
+    
   }, []);
 
-  const addWord = (newWord: string) => {
-    let arrWord = word.split('');
-    let TempList = listWordle;
-    TempList.some((list, index) => {
-      let tem = false; 
-      list.some((wordArg, i) => {
-        if(wordArg === ''){
-          TempList[index][i] = newWord.toLowerCase();
-          tem = true;
-          return true;
-        }
-      });
-      
-      if(JSON.stringify(arrWord) === JSON.stringify(list)){
-        console.log('tu eres el ganador');
-        return true;
-      } else if(tem){
-        return true;
-      }
-    });
-    
+  const winner = () => {
+    setPlays(plays + 1);
+    setVictories(victories + 1);
+    pause();
+    setShowWord(true);
   }
 
-  const winner = () => {
-    console.log('ganaste');
+  const notWinner = () => {
+    setPlays( plays + 1 );
+    pause();
+    setShowWord(true);
+    getWord();
+  }
+
+  const restartGame = () => {
+    restart(timeStamp, true);
+    setClean(true);
+    setShowWord(false);
+    getWord();
+  }
+
+  const getWord = () => {
+    setWord(getRandomWord(words));    
   }
 
   return (
     <>
-      <Navbar seconds={seconds} minutes={minutes}/>
+      <Navbar 
+        seconds={seconds} 
+        minutes={minutes} 
+        victories={victories}
+        plays={plays}
+        showWord={showWord}
+        restartGame={restartGame}
+        word={word}
+      />
       <Game 
         word={word} 
-        listWordle={listWordle}
-        addWord={addWord}
+        winner = {winner}
+        notWinner = {notWinner}
+        clean = {clean}
+        setClean = {setClean}
       />
     </>
   )

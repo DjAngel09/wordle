@@ -24,7 +24,7 @@ export const Keyboard: FC<keyboardInterface> = ({ addWord }) => {
                                     className='cursor-pointer'
                                     onClick={() => addWord(key)}
                                 >
-                                    <CharacterCube styles='bg-[#D3D6DA] px-3 py-3 min-w-[44px] text-center text-[#56575E]' >
+                                    <CharacterCube styles='bg-[#D3D6DA] px-3 py-3 min-w-[44px] text-center text-[#56575E] dark:bg-[#565F7E] dark:text-[#FFFFFF]' >
                                         <p className='text-lg font-semibold' >{key}</p>
                                     </CharacterCube>
                                 </div>

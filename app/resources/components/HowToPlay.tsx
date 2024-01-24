@@ -1,11 +1,20 @@
 'use client'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { CharacterCube } from './CharacterCube'
 import { ModalComponent } from './ModalComponent'
 
 export const HowToPlay = () => {
 
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
+  useEffect(()=> {
+
+    const open = localStorage.getItem('open') || "";
+    if(open === ""){
+      setShowModal(true);
+      localStorage.setItem('open', JSON.stringify(true));
+    }
+    
+  },[])
 
   return (
     <>

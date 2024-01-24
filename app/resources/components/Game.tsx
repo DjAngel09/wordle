@@ -1,19 +1,72 @@
 'use client'
-import React, { FC, useEffect, useState } from 'react'
+import React, { Dispatch, FC, SetStateAction, useEffect, useState } from 'react'
 import { CharacterCube, Keyboard } from '.';
+import { deleteClassToList, formatListWordle, generateClassName } from '../utils';
 
 interface gameInterface { 
     word: string;
-    listWordle: Array<string[]>
-    addWord:(newWord: string) => void;
+    winner: () => void;
+    notWinner: () => void;
+    clean: boolean;
+    setClean: Dispatch<SetStateAction<boolean>>;
 }
 
-export const Game:FC<gameInterface> = ({ word, listWordle, addWord }) => {
-    const [arrayWord, setArrayWord] = useState(word.split(''))
+export const Game:FC<gameInterface> = ({ word, winner, notWinner, clean, setClean }) => {
+    const [arrayWord, setArrayWord] = useState(word.split(''));
+    const [listWordle, setListWordle] = useState(formatListWordle(arrayWord));
+
 
     useEffect(() => {
       setArrayWord(word.split(''));
-    }, [word])
+      console.log('estas usando esta palabra', word);
+      
+    }, [word]);
+
+    useEffect(() => {
+      if(clean){
+        setListWordle(formatListWordle(arrayWord));
+        setClean(false);
+      }
+    }, [clean])
+
+    const addWord = (newWord: string) => {
+        let TempList = listWordle.slice();
+        TempList.some((list, index) => {
+          let tem = false; 
+          let finish = false;
+          list.some((wordArg, i) => {
+            if(newWord.length === 1){
+              if(wordArg.value === ''){
+                TempList[index][i].value = newWord.toLowerCase();
+                
+                if(TempList[4][4] === TempList[index][i]){
+                  finish = true;
+                  tem = false;
+                }else {
+                  tem = true;
+                }
+                
+                return true;
+              }
+            }
+          });
+          
+          
+          if(JSON.stringify(arrayWord) === JSON.stringify(deleteClassToList(list))){
+            setListWordle(generateClassName(TempList, arrayWord));
+            winner();
+            return true;
+          } else if(tem){
+            setListWordle(generateClassName(TempList, arrayWord));
+            return true;
+          } else if (finish){
+            setListWordle(generateClassName(TempList, arrayWord));
+            notWinner();
+            return true;
+          }
+        });
+        
+      }
     
     
 
@@ -26,8 +79,8 @@ export const Game:FC<gameInterface> = ({ word, listWordle, addWord }) => {
                             <div key={i} className='flex gap-3 pb-3' >
                                 {
                                     list.map((letter, index) =>
-                                        <CharacterCube key={index} styles={`flex justify-center items-center w-[76px] h-[76px] ${letter === '' ? 'bg-[#939B9F4D]' : 'bg-[#939B9F]'} ${letter === arrayWord[index] ? 'bg-[#66A060]' : arrayWord.includes(letter) ?  'bg-[#CEB02C]' : ''}`}>
-                                            <p className='text-3xl font-semibold' >{letter.toUpperCase()}</p>
+                                        <CharacterCube key={index} styles={`flex justify-center items-center w-[76px] h-[76px] ${letter.className}`}>
+                                            <p className='text-3xl font-semibold' >{letter.value.toUpperCase()}</p>
                                         </CharacterCube>
                                     )
                                 }
